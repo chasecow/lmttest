@@ -101,7 +101,7 @@ function MediaUnlockTest_HBONow() {
 
 # 流媒体解锁测试-动画疯
 function MediaUnlockTest_BahamutAnime() {
-    echo -n -e " Bahamut Anime:\t\t\t\t->\c";
+    echo -n -e " 📺 Bahamut Anime:\t\t\t\t->\c";
     local tmpresult=`curl -${1} --user-agent "${UA_Browser}" --max-time 30 -fsSL 'https://ani.gamer.com.tw/ajax/token.php?adID=89422&sn=14667' 2>&1`;
     if [[ "$tmpresult" == "curl"* ]]; then
         echo -n -e "\r Bahamut Anime:\t\t\t\t${Font_Red}Failed (Network Connection)${Font_Suffix}\n" && echo -e " Bahamut Anime:\t\t\t\tFailed (Network Connection)" >> ${LOG_FILE};
@@ -134,7 +134,7 @@ function MediaUnlockTest_BahamutAnime() {
 
 # 流媒体解锁测试-哔哩哔哩大陆限定
 function MediaUnlockTest_BilibiliChinaMainland() {
-    echo -n -e " BiliBili China Mainland Only:\t\t->\c";
+    echo -n -e " 📺 BiliBili China Mainland Only:\t\t->\c";
     local randsession="$(cat /dev/urandom | head -n 32 | md5sum | head -c 32)";
     # 尝试获取成功的结果
     local result=`curl --user-agent "${UA_Browser}" -${1} -fsSL --max-time 30 "https://api.bilibili.com/pgc/player/web/playurl?avid=82846771&qn=0&type=&otype=json&ep_id=307247&fourk=1&fnver=0&fnval=16&session=${randsession}&module=bangumi" 2>&1`;
