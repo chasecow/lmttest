@@ -81,21 +81,21 @@ function GameTest_Steam(){
 }
 
 function MediaUnlockTest_HBONow() {
-    echo -n -e " HBO Now:\t\t\t\t->\c";
+    echo -n -e " 📺 HBO Now:\t\t\t\t->\c";
     # 尝试获取成功的结果
     local result=`curl --user-agent "${UA_Browser}" -${1} -fsSL --max-time 30 --write-out "%{url_effective}\n" --output /dev/null https://play.hbonow.com/ 2>&1`;
     if [[ "$result" != "curl"* ]]; then
         # 下载页面成功，开始解析跳转
         if [ "${result}" = "https://play.hbonow.com" ] || [ "${result}" = "https://play.hbonow.com/" ]; then
-            echo -n -e "\r HBO Now:\t\t\t\t${Font_Green}Yes${Font_Suffix}\n" && echo " HBO Now:\t\t\t\tYes" >> ${LOG_FILE};
+            echo -n -e "\r 📺 HBO Now:\t\t\t\t${Font_Green}Yes${Font_Suffix}\n" && echo " 📺 HBO Now:\t\t\t\tYes" >> ${LOG_FILE};
             elif [ "${result}" = "http://hbogeo.cust.footprint.net/hbonow/geo.html" ] || [ "${result}" = "http://geocust.hbonow.com/hbonow/geo.html" ]; then
-            echo -n -e "\r HBO Now:\t\t\t\t${Font_Red}No${Font_Suffix}\n" && echo -e " HBO Now:\t\t\t\tNo" >> ${LOG_FILE};
+            echo -n -e "\r 📺 HBO Now:\t\t\t\t${Font_Red}No${Font_Suffix}\n" && echo -e " 📺 HBO Now:\t\t\t\tNo" >> ${LOG_FILE};
         else
-            echo -n -e "\r HBO Now:\t\t\t\t${Font_Yellow}Failed (Parse Json)${Font_Suffix}\n" && echo -e " HBO Now:\t\t\t\tFailed (Parse Json)" >> ${LOG_FILE};
+            echo -n -e "\r 📺 HBO Now:\t\t\t\t${Font_Yellow}Failed (Parse Json)${Font_Suffix}\n" && echo -e " 📺 HBO Now:\t\t\t\tFailed (Parse Json)" >> ${LOG_FILE};
         fi
     else
         # 下载页面失败，返回错误代码
-        echo -n -e "\r HBO Now:\t\t\t\t${Font_Red}Failed (Network Connection)${Font_Suffix}\n" && echo -e " HBO Now:\t\t\t\tFailed (Network Connection)" >> ${LOG_FILE};
+        echo -n -e "\r 📺 HBO Now:\t\t\t\t${Font_Red}Failed (Network Connection)${Font_Suffix}\n" && echo -e " 📺 HBO Now:\t\t\t\tFailed (Network Connection)" >> ${LOG_FILE};
     fi
 }
 
